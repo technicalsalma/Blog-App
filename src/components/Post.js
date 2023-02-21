@@ -1,10 +1,9 @@
 import React from 'react';
-import '../style.css'
 import {Link} from 'react-router-dom'
 
-const Post = ({blog}) => {
+const Post = ({blog, key}) => {
     return (
-        <Link className='blog-link'>
+        <Link to={`/read/${blog.id}`} className='post-link'>
         <div className='blog'>
             <img className='blog-image' src={blog.thumbnail} alt=""/>
             <div className='blog-title'>

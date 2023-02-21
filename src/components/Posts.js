@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import '../style.css'
 import Post from './Post';
 import { FaCalculator } from 'react-icons/fa';
 
