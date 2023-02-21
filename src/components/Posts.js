@@ -5,17 +5,26 @@ import { FaCalculator } from 'react-icons/fa';
 
 const Posts = () => {
     const [blogs , setBlogs] = useState([])
+    const [records, setRecords] = useState([])
 
    useEffect( ()=>{
    axios.get('https://dummyjson.com/products')
-   .then(res=> setBlogs(res.data.products))
+   .then(res=> {
+    setBlogs(res.data.products)
+    setRecords(res.data.products)
+})
+   
    .catch(err => console.log(err))
    },[])
+
+   const getInputData = (event) =>{
+    setBlogs(records.filter(r => r.title.toLowerCase().includes(event.target.value.toLowerCase())))
+   }
 
     return (
         <div className='posts'>
            <div className='search-container'>
-            <input type="text" placeholder='search' className='search-input'></input>
+            <input type="text" placeholder='search' onInput={getInputData} className='search-input'></input>
            </div> 
            <div className='blog-icon'>
             <h3>Blogs</h3>
